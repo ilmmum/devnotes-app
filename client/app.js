@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4001/api/notes';
+const API_URL = 'http://localhost:4000/api/notes';
 
 const form = document.getElementById('note-form');
 const notesList = document.getElementById('notes-list');

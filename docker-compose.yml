@@ -1,0 +1,43 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - devnotes-network
+    volumes:
+      - mongodb-data:/data/db
+
+  backend:
+    build: ./server
+    container_name: devnotes-backend
+    restart: always
+    env_file:
+      - ./server/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongodb
+    networks:
+      - devnotes-network
+
+  frontend:
+    build: ./client
+    container_name: devnotes-frontend
+    restart: always
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+    networks:
+      - devnotes-network
+
+networks:
+  devnotes-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local
