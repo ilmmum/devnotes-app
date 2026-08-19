@@ -10,6 +10,7 @@ async function fetchNotes() {
 }
 
 function renderNotes(notes) {
+  document.getElementById("note-count").textContent = `You have ${notes.length} note${notes.length === 1 ? "" : "s"}`;
   notesList.innerHTML = '';
   notes.forEach(note => {
     const div = document.createElement('div');
