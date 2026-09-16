@@ -18,6 +18,7 @@ function renderNotes(notes) {
     div.innerHTML = `
       <h3>${note.title}</h3>
       <p>${note.content}</p>
+      <small>${new Date(note.createdAt).toLocaleDateString()}</small>
       <button onclick="deleteNote('${note._id}')">Delete</button>
     `;
     notesList.appendChild(div);
