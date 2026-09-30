@@ -52,7 +52,7 @@ app.delete('/api/notes/:id', async (req, res) => {
 
 // Health check
 app.get('/health', (req, res) => {
-  res.status(200).json({ message: 'DevNotes server is running!' });
+  res.status(500).json({ message: 'DevNotes server is running!' });
 });
 
 // 404 handler
